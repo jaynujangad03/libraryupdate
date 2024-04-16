@@ -29,7 +29,6 @@ public class loginForm extends javax.swing.JFrame {
         try{
             String query = "SELECT * FROM tbl_user  WHERE u_username = '" +username+ "' AND u_password = '" +password+ "'";
             ResultSet resultSet = connector.getData(query);
-            System.out.println("Test");
             return resultSet.next();
         }catch (SQLException ex) {
             System.out.println(""+ex);

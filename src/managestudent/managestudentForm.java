@@ -18,12 +18,23 @@ import javax.swing.JOptionPane;
  */
 public class managestudentForm extends javax.swing.JFrame {
 
+    
     /**
      * Creates new form loginForm
      */
     public managestudentForm() {
         initComponents();
     }
+    public void close(){
+        managestudentTable managestudentTable = new managestudentTable();
+        managestudentTable.setVisible(true);
+        this.dispose();   
+        
+    }
+    
+    public String gender;
+    public String action="";
+
     public static boolean loginAcc(String username, String password){
         dbConnector connector = new dbConnector();
         try{
@@ -51,32 +62,38 @@ public class managestudentForm extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        fname = new javax.swing.JTextField();
+        st_ad = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        pass = new javax.swing.JPasswordField();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        em = new javax.swing.JTextField();
+        st_lb = new javax.swing.JButton();
+        st_em = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        account = new javax.swing.JComboBox<>();
         jLabel17 = new javax.swing.JLabel();
-        lname = new javax.swing.JTextField();
+        st_ln = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        user = new javax.swing.JTextField();
-        jLabel20 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        book_table = new javax.swing.JTable();
+        jLabel12 = new javax.swing.JLabel();
+        st_id = new javax.swing.JTextField();
+        jLabel21 = new javax.swing.JLabel();
+        st = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        st_ct = new javax.swing.JTextField();
+        jLabel25 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        male = new javax.swing.JRadioButton();
         jPanel4 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
+        female = new javax.swing.JRadioButton();
+        jLabel1 = new javax.swing.JLabel();
+        st_fn1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -89,147 +106,100 @@ public class managestudentForm extends javax.swing.JFrame {
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 25)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Create new account here");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, -1, -1));
+        jLabel2.setText("Please Fill-up All Field");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 60, -1, -1));
 
         jLabel7.setBackground(new java.awt.Color(255, 255, 255));
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("PASSWORD");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 520, -1, 20));
+        jLabel7.setText("Address");
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 490, -1, 20));
 
         jLabel8.setBackground(new java.awt.Color(255, 255, 255));
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 25)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("Signup Page");
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, -1, -1));
+        jLabel8.setText("Add Student");
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, -1, -1));
 
         jLabel9.setBackground(new java.awt.Color(255, 255, 255));
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICON/icons8_Secure_50px.png"))); // NOI18N
-        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 530, -1, -1));
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 500, -1, -1));
 
-        fname.setBackground(new java.awt.Color(102, 102, 225));
-        fname.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        fname.setForeground(new java.awt.Color(255, 255, 255));
-        fname.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        fname.setToolTipText("");
-        fname.setAutoscrolls(false);
-        fname.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
-        jPanel2.add(fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 210, 270, -1));
-        fname.getAccessibleContext().setAccessibleName("");
+        st_ad.setBackground(new java.awt.Color(102, 102, 225));
+        st_ad.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        st_ad.setForeground(new java.awt.Color(255, 255, 255));
+        st_ad.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        st_ad.setToolTipText("");
+        st_ad.setAutoscrolls(false);
+        st_ad.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
+        jPanel2.add(st_ad, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 530, 270, -1));
+        st_ad.getAccessibleContext().setAccessibleName("");
 
         jLabel10.setBackground(new java.awt.Color(255, 255, 255));
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("FIRSTNAME");
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, -1, -1));
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 130, -1, -1));
 
         jLabel11.setBackground(new java.awt.Color(255, 255, 255));
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICON/icons8_Account_50px.png"))); // NOI18N
-        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 180, -1, -1));
+        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 140, -1, -1));
 
-        jButton2.setBackground(new java.awt.Color(255, 255, 255));
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton2.setText("CREATE");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        st_lb.setBackground(new java.awt.Color(255, 255, 255));
+        st_lb.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        st_lb.setText("CREATE");
+        st_lb.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                st_lbActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 710, 100, 40));
+        jPanel2.add(st_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 660, 100, 40));
 
-        pass.setBackground(new java.awt.Color(102, 102, 225));
-        pass.setForeground(new java.awt.Color(255, 255, 255));
-        pass.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        pass.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
-        pass.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passActionPerformed(evt);
-            }
-        });
-        jPanel2.add(pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 560, 270, 20));
-
-        jLabel13.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel13.setText("ACCOUNT");
-        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 600, -1, -1));
-
-        jLabel14.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel14.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICON/icons8_Account_50px.png"))); // NOI18N
-        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 610, -1, -1));
-
-        em.setBackground(new java.awt.Color(102, 102, 225));
-        em.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        em.setForeground(new java.awt.Color(255, 255, 255));
-        em.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        em.setToolTipText("");
-        em.setAutoscrolls(false);
-        em.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
-        jPanel2.add(em, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 390, 270, -1));
+        st_em.setBackground(new java.awt.Color(102, 102, 225));
+        st_em.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        st_em.setForeground(new java.awt.Color(255, 255, 255));
+        st_em.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        st_em.setToolTipText("");
+        st_em.setAutoscrolls(false);
+        st_em.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
+        jPanel2.add(st_em, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 290, 270, -1));
 
         jLabel15.setBackground(new java.awt.Color(255, 255, 255));
         jLabel15.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText("EMAIL");
-        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 350, -1, -1));
+        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 250, -1, -1));
 
         jLabel16.setBackground(new java.awt.Color(255, 255, 255));
         jLabel16.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICON/icons8_Secured_Letter_50px.png"))); // NOI18N
-        jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 370, -1, 40));
-
-        account.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Librarian", "Student" }));
-        jPanel2.add(account, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 630, 280, 30));
+        jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 270, -1, 40));
 
         jLabel17.setBackground(new java.awt.Color(255, 255, 255));
         jLabel17.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICON/icons8_Account_50px.png"))); // NOI18N
-        jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 270, -1, -1));
+        jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, -1, -1));
 
-        lname.setBackground(new java.awt.Color(102, 102, 225));
-        lname.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lname.setForeground(new java.awt.Color(255, 255, 255));
-        lname.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        lname.setToolTipText("");
-        lname.setAutoscrolls(false);
-        lname.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
-        jPanel2.add(lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 300, 270, -1));
+        st_ln.setBackground(new java.awt.Color(102, 102, 225));
+        st_ln.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        st_ln.setForeground(new java.awt.Color(255, 255, 255));
+        st_ln.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        st_ln.setToolTipText("");
+        st_ln.setAutoscrolls(false);
+        st_ln.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
+        jPanel2.add(st_ln, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 290, 270, -1));
 
         jLabel18.setBackground(new java.awt.Color(255, 255, 255));
         jLabel18.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
         jLabel18.setText("LASTNAME");
-        jPanel2.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 260, -1, -1));
-
-        jLabel19.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel19.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICON/icons8_Account_50px.png"))); // NOI18N
-        jPanel2.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 440, -1, -1));
-
-        user.setBackground(new java.awt.Color(102, 102, 225));
-        user.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        user.setForeground(new java.awt.Color(255, 255, 255));
-        user.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        user.setToolTipText("");
-        user.setAutoscrolls(false);
-        user.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
-        jPanel2.add(user, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 470, 270, -1));
-
-        jLabel20.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel20.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel20.setText("USERNAME");
-        jPanel2.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 430, -1, -1));
+        jPanel2.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 250, -1, -1));
 
         jButton3.setBackground(new java.awt.Color(255, 255, 255));
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -239,56 +209,94 @@ public class managestudentForm extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 710, 100, 40));
+        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 660, 100, 40));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 530, 830));
+        jLabel12.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICON/icons8_Account_50px.png"))); // NOI18N
+        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 30)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 51, 51));
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONaddnewbook/icons8_Books_52px_1.png"))); // NOI18N
-        jLabel3.setText("Manage Student");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 20, 320, -1));
+        st_id.setBackground(new java.awt.Color(102, 102, 225));
+        st_id.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        st_id.setForeground(new java.awt.Color(255, 255, 255));
+        st_id.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        st_id.setToolTipText("");
+        st_id.setAutoscrolls(false);
+        st_id.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
+        st_id.setEnabled(false);
+        jPanel2.add(st_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 170, 270, -1));
 
-        jPanel5.setBackground(new java.awt.Color(255, 51, 51));
+        jLabel21.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel21.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel21.setText("Student ID");
+        jPanel2.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 130, -1, -1));
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 360, Short.MAX_VALUE)
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 5, Short.MAX_VALUE)
-        );
+        st.setBackground(new java.awt.Color(255, 255, 255));
+        st.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        st.setForeground(new java.awt.Color(255, 255, 255));
+        st.setText("Gender");
+        jPanel2.add(st, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 390, -1, -1));
 
-        getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 80, 360, 5));
+        jLabel23.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel23.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICON/icons8_Account_50px.png"))); // NOI18N
+        jPanel2.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 400, -1, -1));
 
-        book_table.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+        jLabel24.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel24.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel24.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICON/icons8_Account_50px.png"))); // NOI18N
+        jPanel2.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 400, -1, -1));
 
-            },
-            new String [] {
+        st_ct.setBackground(new java.awt.Color(102, 102, 225));
+        st_ct.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        st_ct.setForeground(new java.awt.Color(255, 255, 255));
+        st_ct.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        st_ct.setToolTipText("");
+        st_ct.setAutoscrolls(false);
+        st_ct.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
+        jPanel2.add(st_ct, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 430, 270, -1));
 
-            }
-        ));
-        jScrollPane2.setViewportView(book_table);
+        jLabel25.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel25.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel25.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel25.setText("Contact");
+        jPanel2.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 390, -1, -1));
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 120, 560, 530));
-
-        jPanel4.setBackground(new java.awt.Color(102, 102, 225));
-        jPanel4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanel4MouseClicked(evt);
+        male.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        male.setText("male");
+        male.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                maleActionPerformed(evt);
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 45)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("X");
-        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel4MouseClicked(evt);
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(male)
+                .addContainerGap(22, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addComponent(male)
+                .addGap(0, 5, Short.MAX_VALUE))
+        );
+
+        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 420, -1, 30));
+
+        female.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        female.setText("female");
+        female.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                femaleActionPerformed(evt);
             }
         });
 
@@ -297,73 +305,115 @@ public class managestudentForm extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jLabel4)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addGap(21, 21, 21)
+                .addComponent(female)
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(female)
+                .addGap(0, 5, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 10, 80, -1));
+        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 420, -1, -1));
 
-        setSize(new java.awt.Dimension(1189, 819));
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabel1.setText("X");
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 0, 40, 50));
+
+        st_fn1.setBackground(new java.awt.Color(102, 102, 225));
+        st_fn1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        st_fn1.setForeground(new java.awt.Color(255, 255, 255));
+        st_fn1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        st_fn1.setToolTipText("");
+        st_fn1.setAutoscrolls(false);
+        st_fn1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
+        jPanel2.add(st_fn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 170, 270, -1));
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 830, 830));
+
+        setSize(new java.awt.Dimension(847, 819));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void st_lbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_st_lbActionPerformed
         // TODO add your handling code here:
-        dbConnector dbc = new dbConnector();
-           if(fname.getText().equals("")){
-           JOptionPane.showMessageDialog (null, "Please fillup fname");
-           
-        }else if (lname.getText ().equals ("")){
-           JOptionPane.showMessageDialog(null, "Please fillup lastname");
-        }else if (em.getText ().equals ("")){
-           JOptionPane.showMessageDialog(null, "Please fillup email");
-        }else if (user.getText ().equals ("")){
-           JOptionPane.showMessageDialog(null, "Pleasefillup username");
-        }else if (pass.getText ().equals ("")){
-           JOptionPane.showMessageDialog(null, "Please fillup password");
-        }
-        
-            else if(dbc.insertData("INSERT INTO tbl_user (u_fname, u_lname, u_email, u_username, u_password, u_account, u_status) VALUES ('"+fname.getText()+"', '"+lname.getText()+"', '"+em.getText()+"', '"+user.getText()+"', '"+pass.getText()+"', '"+account.getSelectedItem()+"', 'Pending')")){                                        
-                JOptionPane.showMessageDialog(null, "created Successfully!");
-                setVisible(false);
-                new dashBoard().setVisible(true);
-                loginForm loginForm = new loginForm();
-                loginForm.setVisible(true);
-                this.dispose();
-         
-        }else{
-            JOptionPane.showMessageDialog(null, "Invalid Username or Password!","Message",JOptionPane.ERROR_MESSAGE);
-            }
-   
-    }//GEN-LAST:event_jButton2ActionPerformed
+       if(action.equals("Add")){
+           dbConnector dbc = new dbConnector();
+          boolean result = dbc.insertData("INSERT INTO tbl_students(s_fname, s_lname, s_gender, s_address, s_contact, s_email) "
+        + "VALUES('" + st_ad.getText() + "', '" + st_ln.getText() + "', '" + gender + "', '" + st_ad.getText() + "', '" + st_ct.getText() + "', '" + st_em.getText() + "')");
 
-    private void passActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_passActionPerformed
+
+         if(result ){
+          JOptionPane.showMessageDialog(null, "Successfully Save!");
+          close();
+      }else{
+          System.out.println("Saving Data Failed");
+      }
+       }else if(action.equals("Update")){
+           dbConnector dbc = new dbConnector();
+           dbc.updateData("UPDATE tbl_studens SET s_fname = '" + st_ad.getText() + "', s_lname = '" + st_ln.getText() + "', s_gender = '" + gender + "', s_address = '" + st_ad.getText() +"', s_contact = '" + st_ct.getText() + "', s_email = '" + st_em.getText() + "' "
+        + "WHERE s_id = '" + st_id.getText() + "'");
+           close();
+
+       }else{
+           JOptionPane.showMessageDialog(null, " No Selection Made!");
+           managestudentTable dashBoard = new managestudentTable();
+            dashBoard.setVisible(true);
+            this.dispose();
+       }
+    }//GEN-LAST:event_st_lbActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        loginForm loginForm = new loginForm();
-        loginForm.setVisible(true);
+        dashBoard dashBoard = new dashBoard();
+        dashBoard.setVisible(true);
         this.dispose();
+        
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+    private void maleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maleActionPerformed
         // TODO add your handling code here:
-        System.exit(0);
-    }//GEN-LAST:event_jLabel4MouseClicked
+        female.setSelected(false);
+        if(male.isSelected()){
+            gender = "Male";
+            
+        }else{
+            gender = null;
+        }
+    }//GEN-LAST:event_maleActionPerformed
 
-    private void jPanel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseClicked
+    private void femaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_femaleActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jPanel4MouseClicked
+         male.setSelected(false);
+        if(female.isSelected()){
+            gender = "Female";
+            
+        }else{
+            gender = null;
+        }
+    }//GEN-LAST:event_femaleActionPerformed
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        // TODO add your handling code here:
+        close();
+        
+    }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        if(action.isEmpty()){
+            JOptionPane.showMessageDialog(null, " No Selection Made!");
+           managestudentTable dashBoard = new managestudentTable();
+            dashBoard.setVisible(true);
+            this.dispose();
+        }
+    }//GEN-LAST:event_formWindowActivated
 
     /**
      * @param args the command line arguments
@@ -408,35 +458,36 @@ public class managestudentForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> account;
-    private javax.swing.JTable book_table;
-    private javax.swing.JTextField em;
-    private javax.swing.JTextField fname;
-    private javax.swing.JButton jButton2;
+    public javax.swing.JRadioButton female;
     private javax.swing.JButton jButton3;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField lname;
-    private javax.swing.JPasswordField pass;
-    private javax.swing.JTextField user;
+    public javax.swing.JRadioButton male;
+    private javax.swing.JLabel st;
+    public javax.swing.JTextField st_ad;
+    public javax.swing.JTextField st_ct;
+    public javax.swing.JTextField st_em;
+    public javax.swing.JTextField st_fn1;
+    public javax.swing.JTextField st_id;
+    public javax.swing.JButton st_lb;
+    public javax.swing.JTextField st_ln;
     // End of variables declaration//GEN-END:variables
 }

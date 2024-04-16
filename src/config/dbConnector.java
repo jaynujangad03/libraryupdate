@@ -70,11 +70,11 @@ public class dbConnector {
         //function to delete data
         public void deleteData(int id, String table){
             try{
-               PreparedStatement pst = connect.prepareStatement("DELETE FROM tbl_book WHERE b_id = ?"); 
+               PreparedStatement pst = connect.prepareStatement("DELETE FROM tbl_students WHERE s_id = ?"); 
                pst.setInt(1,id);
                int rowsDeleted = pst.executeUpdate();
                if(rowsDeleted > 0){
-                 JOptionPane.showMessageDialog(null,"Deleted Successfully");
+                 JOptionPane.showMessageDialog(null," Data Deleted Successfully");
   
                }else{
                   System.out.println("Deletion failed!"); 

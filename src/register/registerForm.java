@@ -23,8 +23,41 @@ public class registerForm extends javax.swing.JFrame {
      */
     public registerForm() {
         initComponents();
+        
+    }
+    public static String email, usname;
+    
+    public boolean duplicateCheck(){
+       dbConnector connector = new dbConnector();
+       
+       try{
+           String query = "SELECT * FROM tbl_user  WHERE u_username = '" +user.getText()+ "' OR u_email = '" +em.getText()+ "'";
+            ResultSet resultSet = connector.getData(query);
+            
+            if(resultSet.next()){
+                email = resultSet.getString("u_email");
+                if(email.equals(em.getText())){
+                    JOptionPane.showMessageDialog(null, "Email is already used");
+                    em.setText("");
+                } 
+                usname = resultSet.getString("u_username");
+                 if(usname.equals(user.getText())){
+                    JOptionPane.showMessageDialog(null, "Username is already used");
+                    user.setText("");
+                }
+                return true;
+
+            }else{
+                return false;
+            }
+                
+       }catch(SQLException ex){
+           System.out.println(""+ex);
+           return false;
+       }
     }
     public static boolean loginAcc(String username, String password){
+      
         dbConnector connector = new dbConnector();
         try{
             String query = "SELECT * FROM tbl_user  WHERE u_username = '" + username + "' AND u_password = '" + password + "'";
@@ -243,32 +276,33 @@ public class registerForm extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        dbConnector dbc = new dbConnector();
-           if(fname.getText().equals("")){
-           JOptionPane.showMessageDialog (null, "Please fillup fname");
-           
-        }else if (lname.getText ().equals ("")){
-           JOptionPane.showMessageDialog(null, "Please fillup lastname");
-        }else if (em.getText ().equals ("")){
-           JOptionPane.showMessageDialog(null, "Please fillup email");
-        }else if (user.getText ().equals ("")){
-           JOptionPane.showMessageDialog(null, "Pleasefillup username");
-        }else if (pass.getText ().equals ("")){
-           JOptionPane.showMessageDialog(null, "Please fillup password");
-        }
         
-            else if(dbc.insertData("INSERT INTO tbl_user (u_fname, u_lname, u_email, u_username, u_password, u_account, u_status) VALUES ('"+fname.getText()+"', '"+lname.getText()+"', '"+em.getText()+"', '"+user.getText()+"', '"+pass.getText()+"', '"+account.getSelectedItem()+"', 'Pending')")){                                        
+        
+          if(fname.getText().isEmpty()|| lname.getText().isEmpty()|| em.getText().isEmpty()|| user.getText().isEmpty()|| pass.getText().isEmpty()){
+       
+            JOptionPane.showMessageDialog(null, "All field are required");
+       
+          }else if(pass.getText().length() < 8){
+            JOptionPane.showMessageDialog(null, "Passwords should 8 above");
+            pass.setText("");
+              
+          }else if(duplicateCheck()){
+              System.out.println("Duplicate Exist");
+          }else{
+               dbConnector dbc = new dbConnector();
+        
+           if(dbc.insertData("INSERT INTO tbl_user (u_fname, u_lname, u_email, u_username, u_password, u_account, u_status) VALUES ('"+fname.getText()+"', '"+lname.getText()+"', '"+em.getText()+"', '"+user.getText()+"', '"+pass.getText()+"', '"+account.getSelectedItem()+"', 'Pending')")){                                        
                 JOptionPane.showMessageDialog(null, "created Successfully!");
                 setVisible(false);
-                new dashBoard().setVisible(true);
+               
                 loginForm loginForm = new loginForm();
                 loginForm.setVisible(true);
                 this.dispose();
          
         }else{
-            JOptionPane.showMessageDialog(null, "Invalid Username or Password!","Message",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Register failed");
             }
-   
+          }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void passActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passActionPerformed

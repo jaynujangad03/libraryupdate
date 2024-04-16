@@ -5,6 +5,7 @@
  */
 package manageBook;
 
+import admin.dashBoard;
 import config.dbConnector;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,6 +13,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.table.TableModel;
+import managestudent.managestudentForm;
 import net.proteanit.sql.DbUtils;
 
 
@@ -127,7 +129,7 @@ public class managebookTable extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 30)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 51, 51));
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONaddnewbook/icons8_Books_52px_1.png"))); // NOI18N
-        jLabel5.setText("  Manage Book");
+        jLabel5.setText("Student Table");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, 300, -1));
 
         book_table.setModel(new javax.swing.table.DefaultTableModel(
@@ -291,6 +293,9 @@ public class managebookTable extends javax.swing.JFrame {
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
         // TODO add your handling code here:
+        dashBoard dashBoard = new dashBoard();
+        dashBoard.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jLabel1MouseClicked
 
     private void b_refresh1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_refresh1MouseClicked

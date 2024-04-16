@@ -11,6 +11,8 @@ import java.awt.Color;
 import javax.swing.JOptionPane;
 import librarymanagementsystem.loginForm;
 import manageBook.managebookForm;
+import manageBook.managebookTable;
+import managestudent.managestudentTable;
 
 /**
  *
@@ -63,7 +65,6 @@ public class dashBoard extends javax.swing.JFrame {
         jPanel7 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
@@ -73,9 +74,9 @@ public class dashBoard extends javax.swing.JFrame {
         jPanel11 = new javax.swing.JPanel();
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        book_table = new javax.swing.JTable();
         jLabel25 = new javax.swing.JLabel();
+        jPanel19 = new javax.swing.JPanel();
+        jLabel17 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -231,6 +232,9 @@ public class dashBoard extends javax.swing.JFrame {
         jLabel27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONadmin/icons8_Read_Online_26px.png"))); // NOI18N
         jLabel27.setText("Manage Student");
         jLabel27.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel27MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLabel27MouseEntered(evt);
             }
@@ -498,10 +502,6 @@ public class dashBoard extends javax.swing.JFrame {
 
         jPanel7.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, 260, 140));
 
-        jLabel17.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
-        jLabel17.setText("Book Details");
-        jPanel7.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, -1, -1));
-
         jLabel19.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         jLabel19.setText("No of Students");
         jPanel7.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 40, -1, -1));
@@ -592,23 +592,51 @@ public class dashBoard extends javax.swing.JFrame {
         jLabel23.setText("Defaulter Book");
         jPanel7.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 270, -1, -1));
 
-        book_table.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
-        book_table.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        book_table.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-
-            }
-        ));
-        jScrollPane1.setViewportView(book_table);
-
-        jPanel7.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, 550, -1));
-
         jLabel25.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         jLabel25.setText("No of Book");
         jPanel7.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, -1, -1));
+
+        jPanel19.setBorder(javax.swing.BorderFactory.createMatteBorder(15, 0, 0, 0, new java.awt.Color(102, 102, 225)));
+        jPanel19.setPreferredSize(new java.awt.Dimension(260, 1));
+        jPanel19.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel19MouseClicked(evt);
+            }
+        });
+
+        jLabel17.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONadmin/icons8_Conference_26px.png"))); // NOI18N
+        jLabel17.setText("USERS");
+        jLabel17.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel17MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel17MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel17MouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel19Layout = new javax.swing.GroupLayout(jPanel19);
+        jPanel19.setLayout(jPanel19Layout);
+        jPanel19Layout.setHorizontalGroup(
+            jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel19Layout.createSequentialGroup()
+                .addContainerGap(49, Short.MAX_VALUE)
+                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41))
+        );
+        jPanel19Layout.setVerticalGroup(
+            jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel19Layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(37, Short.MAX_VALUE))
+        );
+
+        jPanel7.add(jPanel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 310, -1, 140));
 
         getContentPane().add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 70, 1010, 760));
 
@@ -653,9 +681,9 @@ public class dashBoard extends javax.swing.JFrame {
 
     private void jLabel26MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel26MouseClicked
         // TODO add your handling code here:
-        managebookForm manageBook = new managebookForm();
-        manageBook.setVisible(true);
-        dispose();
+        managebookTable managebookTable = new managebookTable();
+        managebookTable.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jLabel26MouseClicked
 
     private void jPanel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseClicked
@@ -740,6 +768,38 @@ public class dashBoard extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "This settings was not finish done ye");
     }//GEN-LAST:event_jLabel1MouseClicked
 
+    private void jPanel19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel19MouseClicked
+        // TODO add your handling code here:
+        userForm userForm = new userForm();
+        userForm.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jPanel19MouseClicked
+
+    private void jLabel17MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseEntered
+        // TODO add your handling code here:
+        this.jPanel19.setBackground(Color.decode("#CCCCCC"));
+    }//GEN-LAST:event_jLabel17MouseEntered
+
+    private void jLabel17MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseExited
+        // TODO add your handling code here:
+        this.jPanel19.setBackground(Color.decode("#F0F0F0"));
+        
+    }//GEN-LAST:event_jLabel17MouseExited
+
+    private void jLabel17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseClicked
+        // TODO add your handling code here:
+        userForm userForm = new userForm();
+        userForm.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel17MouseClicked
+
+    private void jLabel27MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel27MouseClicked
+        // TODO add your handling code here:
+        managestudentTable managestudentTable = new managestudentTable();
+        managestudentTable.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel27MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -777,7 +837,6 @@ public class dashBoard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable book_table;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
@@ -812,6 +871,7 @@ public class dashBoard extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel17;
     private javax.swing.JPanel jPanel18;
+    private javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -820,7 +880,6 @@ public class dashBoard extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 
 }
