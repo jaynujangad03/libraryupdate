@@ -49,7 +49,7 @@ public class dashBoard extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         jPanel13 = new javax.swing.JPanel();
-        jLabel27 = new javax.swing.JLabel();
+        students = new javax.swing.JLabel();
         jPanel14 = new javax.swing.JPanel();
         jLabel28 = new javax.swing.JLabel();
         jPanel15 = new javax.swing.JPanel();
@@ -76,7 +76,7 @@ public class dashBoard extends javax.swing.JFrame {
         jLabel23 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
         jPanel19 = new javax.swing.JPanel();
-        jLabel17 = new javax.swing.JLabel();
+        users = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -226,20 +226,38 @@ public class dashBoard extends javax.swing.JFrame {
         jPanel3.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 340, 60));
 
         jPanel13.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel13.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                jPanel13AncestorAdded(evt);
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
 
-        jLabel27.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel27.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONadmin/icons8_Read_Online_26px.png"))); // NOI18N
-        jLabel27.setText("Manage Student");
-        jLabel27.addMouseListener(new java.awt.event.MouseAdapter() {
+        students.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        students.setForeground(new java.awt.Color(153, 153, 153));
+        students.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONadmin/icons8_Read_Online_26px.png"))); // NOI18N
+        students.setText("Manage Student");
+        students.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                studentsAncestorAdded(evt);
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+        students.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel27MouseClicked(evt);
+                studentsMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel27MouseEntered(evt);
+                studentsMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel27MouseExited(evt);
+                studentsMouseExited(evt);
             }
         });
 
@@ -249,14 +267,14 @@ public class dashBoard extends javax.swing.JFrame {
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel13Layout.createSequentialGroup()
                 .addGap(64, 64, 64)
-                .addComponent(jLabel27)
+                .addComponent(students)
                 .addContainerGap(98, Short.MAX_VALUE))
         );
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
                 .addGap(0, 9, Short.MAX_VALUE)
-                .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(students, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jPanel3.add(jPanel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 340, 50));
@@ -604,18 +622,18 @@ public class dashBoard extends javax.swing.JFrame {
             }
         });
 
-        jLabel17.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONadmin/icons8_Conference_26px.png"))); // NOI18N
-        jLabel17.setText("USERS");
-        jLabel17.addMouseListener(new java.awt.event.MouseAdapter() {
+        users.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        users.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONadmin/icons8_Conference_26px.png"))); // NOI18N
+        users.setText("USERS");
+        users.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel17MouseClicked(evt);
+                usersMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel17MouseEntered(evt);
+                usersMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel17MouseExited(evt);
+                usersMouseExited(evt);
             }
         });
 
@@ -625,14 +643,14 @@ public class dashBoard extends javax.swing.JFrame {
             jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel19Layout.createSequentialGroup()
                 .addContainerGap(49, Short.MAX_VALUE)
-                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(users, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(41, 41, 41))
         );
         jPanel19Layout.setVerticalGroup(
             jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel19Layout.createSequentialGroup()
                 .addGap(28, 28, 28)
-                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(users, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(37, Short.MAX_VALUE))
         );
 
@@ -690,17 +708,17 @@ public class dashBoard extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jPanel5MouseClicked
 
-    private void jLabel27MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel27MouseEntered
+    private void studentsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_studentsMouseEntered
         // TODO add your handling code here:
         this.jPanel13.setBackground(Color.decode("#CCCCCC"));
 
-    }//GEN-LAST:event_jLabel27MouseEntered
+    }//GEN-LAST:event_studentsMouseEntered
 
-    private void jLabel27MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel27MouseExited
+    private void studentsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_studentsMouseExited
         // TODO add your handling code here:
         this.jPanel13.setBackground(Color.decode("#333333"));
 
-    }//GEN-LAST:event_jLabel27MouseExited
+    }//GEN-LAST:event_studentsMouseExited
 
     private void jLabel28MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel28MouseEntered
         // TODO add your handling code here:
@@ -770,35 +788,43 @@ public class dashBoard extends javax.swing.JFrame {
 
     private void jPanel19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel19MouseClicked
         // TODO add your handling code here:
-        userForm userForm = new userForm();
+        userPage userForm = new userPage();
         userForm.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jPanel19MouseClicked
 
-    private void jLabel17MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseEntered
+    private void usersMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usersMouseEntered
         // TODO add your handling code here:
         this.jPanel19.setBackground(Color.decode("#CCCCCC"));
-    }//GEN-LAST:event_jLabel17MouseEntered
+    }//GEN-LAST:event_usersMouseEntered
 
-    private void jLabel17MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseExited
+    private void usersMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usersMouseExited
         // TODO add your handling code here:
         this.jPanel19.setBackground(Color.decode("#F0F0F0"));
         
-    }//GEN-LAST:event_jLabel17MouseExited
+    }//GEN-LAST:event_usersMouseExited
 
-    private void jLabel17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseClicked
+    private void usersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usersMouseClicked
         // TODO add your handling code here:
-        userForm userForm = new userForm();
-        userForm.setVisible(true);
+        userPage userPage = new userPage();
+        userPage.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jLabel17MouseClicked
+    }//GEN-LAST:event_usersMouseClicked
 
-    private void jLabel27MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel27MouseClicked
+    private void studentsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_studentsMouseClicked
         // TODO add your handling code here:
         managestudentTable managestudentTable = new managestudentTable();
         managestudentTable.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jLabel27MouseClicked
+    }//GEN-LAST:event_studentsMouseClicked
+
+    private void studentsAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_studentsAncestorAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_studentsAncestorAdded
+
+    private void jPanel13AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jPanel13AncestorAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel13AncestorAdded
 
     /**
      * @param args the command line arguments
@@ -839,7 +865,6 @@ public class dashBoard extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
@@ -849,7 +874,6 @@ public class dashBoard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
@@ -880,6 +904,8 @@ public class dashBoard extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JLabel students;
+    private javax.swing.JLabel users;
     // End of variables declaration//GEN-END:variables
 
 }

@@ -6,9 +6,11 @@
 package librarymanagementsystem;
 
 import admin.dashBoard;
+import admin.userPage;
 import config.dbConnector;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import static javafx.scene.input.KeyCode.I;
 import javax.swing.JOptionPane;
 import register.registerForm;
 
@@ -24,12 +26,21 @@ public class loginForm extends javax.swing.JFrame {
     public loginForm() {
         initComponents();
     }
+    static String status;
+    static String account;
+    
     public static boolean loginAcc(String username, String password){
         dbConnector connector = new dbConnector();
         try{
             String query = "SELECT * FROM tbl_user  WHERE u_username = '" +username+ "' AND u_password = '" +password+ "'";
             ResultSet resultSet = connector.getData(query);
-            return resultSet.next();
+            if(resultSet.next()){
+                status = resultSet.getString("u_status");
+                account = resultSet.getString("u_account");
+                    return true;                    
+            }else{
+                return false;
+            }    
         }catch (SQLException ex) {
             System.out.println(""+ex);
             return false;
@@ -212,17 +223,27 @@ public class loginForm extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        if(loginAcc(user.getText(),pass.getText())){
-        JOptionPane.showMessageDialog(null, "login sucess");
-        
+        if(loginAcc(user.getText(), pass.getText())){
+        if(!status.equals("Active")){
+        JOptionPane.showMessageDialog(null, "In-Active Account, Contact the Admin!");
+    }else{
+        if(account.equals("Admin")){
+        JOptionPane.showMessageDialog(null, "Login Successfully!");
         dashBoard dashBoard = new dashBoard();
         dashBoard.setVisible(true);
         this.dispose();
-            
-      }else{
-       JOptionPane.showMessageDialog(null, "login failed");
-  
-        } 
+    }else if(account.equals("User")){
+        JOptionPane.showMessageDialog(null, "Login Successfully!");
+        userPage userPage = new userPage();
+        userPage.setVisible(true);
+        this.dispose();
+    }else{
+        JOptionPane.showMessageDialog(null, "No accout type found, Contact the Admin!");
+    }
+        }
+    }else{
+        JOptionPane.showMessageDialog(null, "Invalid Account!");
+    }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void passActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passActionPerformed

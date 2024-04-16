@@ -38,7 +38,7 @@ public class managestudentForm extends javax.swing.JFrame {
     public static boolean loginAcc(String username, String password){
         dbConnector connector = new dbConnector();
         try{
-            String query = "SELECT * FROM tbl_book  WHERE u_username = '" + username + "' AND u_password = '" + password + "'";
+            String query = "SELECT * FROM tbl_students  WHERE s_username = '" + username + "' AND s_password = '" + password + "'";
             ResultSet resultSet = connector.getData(query);
             return resultSet.next();
         }catch (SQLException ex) {
@@ -86,7 +86,7 @@ public class managestudentForm extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         female = new javax.swing.JRadioButton();
         jLabel1 = new javax.swing.JLabel();
-        st_fn1 = new javax.swing.JTextField();
+        st_fn = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -105,7 +105,6 @@ public class managestudentForm extends javax.swing.JFrame {
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 25)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Please Fill-up All Field");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 60, -1, -1));
 
@@ -117,7 +116,6 @@ public class managestudentForm extends javax.swing.JFrame {
 
         jLabel8.setBackground(new java.awt.Color(255, 255, 255));
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 25)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Add Student");
         jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, -1, -1));
 
@@ -327,14 +325,14 @@ public class managestudentForm extends javax.swing.JFrame {
         });
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 0, 40, 50));
 
-        st_fn1.setBackground(new java.awt.Color(102, 102, 225));
-        st_fn1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        st_fn1.setForeground(new java.awt.Color(255, 255, 255));
-        st_fn1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        st_fn1.setToolTipText("");
-        st_fn1.setAutoscrolls(false);
-        st_fn1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
-        jPanel2.add(st_fn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 170, 270, -1));
+        st_fn.setBackground(new java.awt.Color(102, 102, 225));
+        st_fn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        st_fn.setForeground(new java.awt.Color(255, 255, 255));
+        st_fn.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        st_fn.setToolTipText("");
+        st_fn.setAutoscrolls(false);
+        st_fn.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
+        jPanel2.add(st_fn, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 170, 270, -1));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 830, 830));
 
@@ -358,11 +356,13 @@ public class managestudentForm extends javax.swing.JFrame {
       }
        }else if(action.equals("Update")){
            dbConnector dbc = new dbConnector();
-           dbc.updateData("UPDATE tbl_studens SET s_fname = '" + st_ad.getText() + "', s_lname = '" + st_ln.getText() + "', s_gender = '" + gender + "', s_address = '" + st_ad.getText() +"', s_contact = '" + st_ct.getText() + "', s_email = '" + st_em.getText() + "' "
+           dbc.updateData("UPDATE tbl_students SET s_fname = '" + st_ad.getText() + "', s_lname = '" + st_ln.getText() + "', s_gender = '" + gender + "', s_address = '" + st_ad.getText() +"', s_contact = '" + st_ct.getText() + "', s_email = '" + st_em.getText() + "' "
         + "WHERE s_id = '" + st_id.getText() + "'");
            close();
 
-       }else{
+       }
+       
+       else{
            JOptionPane.showMessageDialog(null, " No Selection Made!");
            managestudentTable dashBoard = new managestudentTable();
             dashBoard.setVisible(true);
@@ -485,7 +485,7 @@ public class managestudentForm extends javax.swing.JFrame {
     public javax.swing.JTextField st_ad;
     public javax.swing.JTextField st_ct;
     public javax.swing.JTextField st_em;
-    public javax.swing.JTextField st_fn1;
+    public javax.swing.JTextField st_fn;
     public javax.swing.JTextField st_id;
     public javax.swing.JButton st_lb;
     public javax.swing.JTextField st_ln;

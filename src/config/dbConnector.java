@@ -5,6 +5,7 @@
  */
 package config;
 
+import static com.sun.xml.internal.fastinfoset.alphabet.BuiltInRestrictedAlphabets.table;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -68,9 +69,9 @@ public class dbConnector {
         }
         
         //function to delete data
-        public void deleteData(int id, String table){
+        public void deleteData(int id, String table, String table_id){
             try{
-               PreparedStatement pst = connect.prepareStatement("DELETE FROM tbl_students WHERE s_id = ?"); 
+               PreparedStatement pst = connect.prepareStatement("DELETE FROM "+table+" WHERE "+table_id+" = ?"); 
                pst.setInt(1,id);
                int rowsDeleted = pst.executeUpdate();
                if(rowsDeleted > 0){
@@ -85,6 +86,5 @@ public class dbConnector {
             }
             
         }
-        
-        
+      
 }

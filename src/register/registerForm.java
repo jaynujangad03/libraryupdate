@@ -25,7 +25,9 @@ public class registerForm extends javax.swing.JFrame {
         initComponents();
         
     }
-    public static String email, usname;
+     public String gender;
+     
+     public static String email, usname;
     
     public boolean duplicateCheck(){
        dbConnector connector = new dbConnector();
@@ -102,6 +104,12 @@ public class registerForm extends javax.swing.JFrame {
         user = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        female = new javax.swing.JRadioButton();
+        jPanel3 = new javax.swing.JPanel();
+        male = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -123,7 +131,7 @@ public class registerForm extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("PASSWORD");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 520, -1, 20));
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 550, -1, 20));
 
         jLabel8.setBackground(new java.awt.Color(255, 255, 255));
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 25)); // NOI18N
@@ -135,7 +143,7 @@ public class registerForm extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICON/icons8_Secure_50px.png"))); // NOI18N
-        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 530, -1, -1));
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 560, -1, -1));
 
         fname.setBackground(new java.awt.Color(102, 102, 225));
         fname.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -144,20 +152,20 @@ public class registerForm extends javax.swing.JFrame {
         fname.setToolTipText("");
         fname.setAutoscrolls(false);
         fname.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
-        jPanel2.add(fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 210, 270, -1));
+        jPanel2.add(fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, 270, -1));
         fname.getAccessibleContext().setAccessibleName("");
 
         jLabel10.setBackground(new java.awt.Color(255, 255, 255));
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("FIRSTNAME");
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, -1, -1));
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, -1, -1));
 
         jLabel11.setBackground(new java.awt.Color(255, 255, 255));
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICON/icons8_Account_50px.png"))); // NOI18N
-        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 180, -1, -1));
+        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
 
         jButton2.setBackground(new java.awt.Color(255, 255, 255));
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -178,19 +186,19 @@ public class registerForm extends javax.swing.JFrame {
                 passActionPerformed(evt);
             }
         });
-        jPanel2.add(pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 560, 270, 20));
+        jPanel2.add(pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 590, 270, 20));
 
         jLabel13.setBackground(new java.awt.Color(255, 255, 255));
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("ACCOUNT");
-        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 600, -1, -1));
+        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 630, -1, -1));
 
         jLabel14.setBackground(new java.awt.Color(255, 255, 255));
         jLabel14.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICON/icons8_Account_50px.png"))); // NOI18N
-        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 610, -1, -1));
+        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 640, -1, -1));
 
         em.setBackground(new java.awt.Color(102, 102, 225));
         em.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -199,28 +207,28 @@ public class registerForm extends javax.swing.JFrame {
         em.setToolTipText("");
         em.setAutoscrolls(false);
         em.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
-        jPanel2.add(em, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 390, 270, -1));
+        jPanel2.add(em, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 420, 270, -1));
 
         jLabel15.setBackground(new java.awt.Color(255, 255, 255));
         jLabel15.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText("EMAIL");
-        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 350, -1, -1));
+        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 380, -1, -1));
 
         jLabel16.setBackground(new java.awt.Color(255, 255, 255));
         jLabel16.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICON/icons8_Secured_Letter_50px.png"))); // NOI18N
-        jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 370, -1, 40));
+        jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, -1, 40));
 
-        account.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Librarian", "Student" }));
-        jPanel2.add(account, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 630, 280, 30));
+        account.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "User", "Admin" }));
+        jPanel2.add(account, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 660, 280, 30));
 
         jLabel17.setBackground(new java.awt.Color(255, 255, 255));
         jLabel17.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICON/icons8_Account_50px.png"))); // NOI18N
-        jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 270, -1, -1));
+        jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, -1, -1));
 
         lname.setBackground(new java.awt.Color(102, 102, 225));
         lname.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -229,19 +237,19 @@ public class registerForm extends javax.swing.JFrame {
         lname.setToolTipText("");
         lname.setAutoscrolls(false);
         lname.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
-        jPanel2.add(lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 300, 270, -1));
+        jPanel2.add(lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 240, 270, -1));
 
         jLabel18.setBackground(new java.awt.Color(255, 255, 255));
         jLabel18.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
         jLabel18.setText("LASTNAME");
-        jPanel2.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 260, -1, -1));
+        jPanel2.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 200, -1, -1));
 
         jLabel19.setBackground(new java.awt.Color(255, 255, 255));
         jLabel19.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(255, 255, 255));
         jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICON/icons8_Account_50px.png"))); // NOI18N
-        jPanel2.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 440, -1, -1));
+        jPanel2.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 470, -1, -1));
 
         user.setBackground(new java.awt.Color(102, 102, 225));
         user.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -250,13 +258,13 @@ public class registerForm extends javax.swing.JFrame {
         user.setToolTipText("");
         user.setAutoscrolls(false);
         user.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
-        jPanel2.add(user, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 470, 270, -1));
+        jPanel2.add(user, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 500, 270, -1));
 
         jLabel20.setBackground(new java.awt.Color(255, 255, 255));
         jLabel20.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(255, 255, 255));
         jLabel20.setText("USERNAME");
-        jPanel2.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 430, -1, -1));
+        jPanel2.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 460, -1, -1));
 
         jButton3.setBackground(new java.awt.Color(255, 255, 255));
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -268,6 +276,70 @@ public class registerForm extends javax.swing.JFrame {
         });
         jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 710, 100, 40));
 
+        jLabel21.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel21.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICON/icons8_Account_50px.png"))); // NOI18N
+        jPanel2.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, -1, -1));
+
+        jLabel22.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel22.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel22.setText("GENDER");
+        jPanel2.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 290, -1, -1));
+
+        female.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        female.setText("female");
+        female.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                femaleActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(female)
+                .addContainerGap(22, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addComponent(female)
+                .addGap(0, 5, Short.MAX_VALUE))
+        );
+
+        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 320, -1, -1));
+
+        male.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        male.setText("male");
+        male.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                maleActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(male)
+                .addContainerGap(22, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addComponent(male)
+                .addGap(0, 5, Short.MAX_VALUE))
+        );
+
+        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 320, -1, 30));
+
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 530, 830));
 
         setSize(new java.awt.Dimension(545, 867));
@@ -278,7 +350,7 @@ public class registerForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         
-          if(fname.getText().isEmpty()|| lname.getText().isEmpty()|| em.getText().isEmpty()|| user.getText().isEmpty()|| pass.getText().isEmpty()){
+          if(fname.getText().isEmpty()|| lname.getText().isEmpty()|| gender.isEmpty()||em.getText().isEmpty()|| user.getText().isEmpty()|| pass.getText().isEmpty()){
        
             JOptionPane.showMessageDialog(null, "All field are required");
        
@@ -291,7 +363,7 @@ public class registerForm extends javax.swing.JFrame {
           }else{
                dbConnector dbc = new dbConnector();
         
-           if(dbc.insertData("INSERT INTO tbl_user (u_fname, u_lname, u_email, u_username, u_password, u_account, u_status) VALUES ('"+fname.getText()+"', '"+lname.getText()+"', '"+em.getText()+"', '"+user.getText()+"', '"+pass.getText()+"', '"+account.getSelectedItem()+"', 'Pending')")){                                        
+           if(dbc.insertData("INSERT INTO tbl_user (u_fname, u_lname, gender, u_email, u_username, u_password, u_account, u_status) VALUES ('" + fname.getText() + "', '" + lname.getText() + "','" + gender + "', '" + em.getText() + "', '" + user.getText() + "', '" + pass.getText() + "', '" + account.getSelectedItem() + "', 'Pending')")){                                        
                 JOptionPane.showMessageDialog(null, "created Successfully!");
                 setVisible(false);
                
@@ -315,6 +387,28 @@ public class registerForm extends javax.swing.JFrame {
         loginForm.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void femaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_femaleActionPerformed
+        // TODO add your handling code here:
+        male.setSelected(false);
+        if(female.isSelected()){
+            gender = "Female";
+
+        }else{
+            gender = null;
+        }
+    }//GEN-LAST:event_femaleActionPerformed
+
+    private void maleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maleActionPerformed
+        // TODO add your handling code here:
+        female.setSelected(false);
+        if(male.isSelected()){
+            gender = "Male";
+
+        }else{
+            gender = null;
+        }
+    }//GEN-LAST:event_maleActionPerformed
 
     /**
      * @param args the command line arguments
@@ -357,6 +451,7 @@ public class registerForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> account;
     private javax.swing.JTextField em;
+    public javax.swing.JRadioButton female;
     private javax.swing.JTextField fname;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -371,12 +466,17 @@ public class registerForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JTextField lname;
+    public javax.swing.JRadioButton male;
     private javax.swing.JPasswordField pass;
     private javax.swing.JTextField user;
     // End of variables declaration//GEN-END:variables

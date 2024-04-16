@@ -325,7 +325,7 @@ public class managebookTable extends javax.swing.JFrame {
             if(a == JOptionPane.YES_OPTION);
             dbConnector dbc = new dbConnector();
             int b_id = Integer.parseInt(id);
-            dbc.deleteData(b_id,"tbl_book");
+            dbc.deleteData(b_id,"tbl_book","b_id");
             displayData();
            
         }

@@ -328,7 +328,7 @@ public class managestudentTable extends javax.swing.JFrame {
             if(a == JOptionPane.YES_OPTION){
                 dbConnector dbc = new dbConnector();
                 int s_id = Integer.parseInt(id);
-                dbc.deleteData(s_id,"tbl_students");
+                dbc.deleteData(s_id,"tbl_students","s_id");
                 displayData();
             }
            
@@ -346,17 +346,17 @@ public class managestudentTable extends javax.swing.JFrame {
           TableModel model = student_table.getModel();
           managestudentForm msf = new managestudentForm();
           msf.st_id.setText(""+model.getValueAt(rowindex, 0));
-          msf.st_ad.setText(""+model.getValueAt(rowindex, 1));
-          msf.st_ln.setText(""+model.getValueAt(rowindex, 2));
-          msf.gender = model.getValueAt(rowindex, 3).toString();   
-          String gend = model.getValueAt(rowindex, 3).toString(); 
+          msf.st_fn.setText(""+model.getValueAt(rowindex, 1));
+          msf.st_ad.setText(""+model.getValueAt(rowindex, 2));
+          msf.st_ln.setText(""+model.getValueAt(rowindex, 3));
+          msf.gender = model.getValueAt(rowindex, 4).toString();   
+          String gend = model.getValueAt(rowindex, 4).toString(); 
           if(gend.equals("Male")){
             msf.male.setSelected(true);
           }
           if(gend.equals("Female")){
             msf.female.setSelected(true);
           }                      
-          msf.st_ad.setText(model.getValueAt(rowindex, 4).toString());
           msf.st_ct.setText(model.getValueAt(rowindex, 5).toString());
           msf.st_em.setText(model.getValueAt(rowindex, 6).toString());
           msf.setVisible(true);
