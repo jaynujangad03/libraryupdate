@@ -26,8 +26,10 @@ public class loginForm extends javax.swing.JFrame {
     public loginForm() {
         initComponents();
     }
+   
     static String status;
     static String account;
+    static String name;
     
     public static boolean loginAcc(String username, String password){
         dbConnector connector = new dbConnector();
@@ -35,6 +37,7 @@ public class loginForm extends javax.swing.JFrame {
             String query = "SELECT * FROM tbl_user  WHERE u_username = '" +username+ "' AND u_password = '" +password+ "'";
             ResultSet resultSet = connector.getData(query);
             if(resultSet.next()){
+                name = resultSet.getString("u_fname");               
                 status = resultSet.getString("u_status");
                 account = resultSet.getString("u_account");
                     return true;                    
@@ -76,6 +79,7 @@ public class loginForm extends javax.swing.JFrame {
         pass = new javax.swing.JPasswordField();
         jLabel13 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
+        show = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -215,6 +219,15 @@ public class loginForm extends javax.swing.JFrame {
         jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 620, 470, 1));
         jPanel5.getAccessibleContext().setAccessibleName("");
 
+        show.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
+        show.setText("show password");
+        show.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showActionPerformed(evt);
+            }
+        });
+        jPanel2.add(show, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 460, 120, -1));
+
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 0, 530, 830));
 
         setSize(new java.awt.Dimension(1065, 867));
@@ -230,11 +243,13 @@ public class loginForm extends javax.swing.JFrame {
         if(account.equals("Admin")){
         JOptionPane.showMessageDialog(null, "Login Successfully!");
         dashBoard dashBoard = new dashBoard();
+        dashBoard.name.setText(""+name);
         dashBoard.setVisible(true);
         this.dispose();
     }else if(account.equals("User")){
         JOptionPane.showMessageDialog(null, "Login Successfully!");
         userPage userPage = new userPage();
+        userPage.name.setText(""+name);
         userPage.setVisible(true);
         this.dispose();
     }else{
@@ -262,6 +277,16 @@ public class loginForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_jLabel13MouseClicked
+
+    private void showActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showActionPerformed
+        // TODO add your handling code here:
+        if (show.isSelected()) {
+        pass.setEchoChar((char)0); 
+    } else {
+        pass.setEchoChar('*'); 
+    }
+
+    }//GEN-LAST:event_showActionPerformed
 
     /**
      * @param args the command line arguments
@@ -318,6 +343,7 @@ public class loginForm extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPasswordField pass;
-    private javax.swing.JTextField user;
+    private javax.swing.JCheckBox show;
+    public javax.swing.JTextField user;
     // End of variables declaration//GEN-END:variables
 }

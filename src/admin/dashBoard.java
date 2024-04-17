@@ -62,6 +62,8 @@ public class dashBoard extends javax.swing.JFrame {
         jLabel32 = new javax.swing.JLabel();
         jPanel12 = new javax.swing.JPanel();
         jLabel26 = new javax.swing.JLabel();
+        dashboard_name = new javax.swing.JPanel();
+        name = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
@@ -162,7 +164,7 @@ public class dashBoard extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 590, 340, 60));
+        jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 670, 340, 60));
 
         jPanel5.setBackground(new java.awt.Color(51, 51, 51));
         jPanel5.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -191,13 +193,13 @@ public class dashBoard extends javax.swing.JFrame {
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 340, 50));
+        jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 340, 50));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(153, 153, 153));
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICONadmin/icons8_Library_26px_1.png"))); // NOI18N
         jLabel8.setText("LMS Dashboard");
-        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 110, -1, 60));
+        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 190, -1, 60));
 
         jPanel6.setBackground(new java.awt.Color(255, 51, 51));
 
@@ -223,7 +225,7 @@ public class dashBoard extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel3.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 340, 60));
+        jPanel3.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 340, 60));
 
         jPanel13.setBackground(new java.awt.Color(51, 51, 51));
         jPanel13.addAncestorListener(new javax.swing.event.AncestorListener() {
@@ -277,7 +279,7 @@ public class dashBoard extends javax.swing.JFrame {
                 .addComponent(students, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel3.add(jPanel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 340, 50));
+        jPanel3.add(jPanel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 340, 50));
 
         jPanel14.setBackground(new java.awt.Color(51, 51, 51));
 
@@ -310,7 +312,7 @@ public class dashBoard extends javax.swing.JFrame {
                 .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel3.add(jPanel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 340, 50));
+        jPanel3.add(jPanel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 340, 50));
 
         jPanel15.setBackground(new java.awt.Color(51, 51, 51));
 
@@ -343,7 +345,7 @@ public class dashBoard extends javax.swing.JFrame {
                 .addGap(0, 9, Short.MAX_VALUE))
         );
 
-        jPanel3.add(jPanel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 340, 50));
+        jPanel3.add(jPanel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 450, 340, 50));
 
         jPanel16.setBackground(new java.awt.Color(51, 51, 51));
 
@@ -376,7 +378,7 @@ public class dashBoard extends javax.swing.JFrame {
                 .addGap(0, 9, Short.MAX_VALUE))
         );
 
-        jPanel3.add(jPanel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 430, 340, 50));
+        jPanel3.add(jPanel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 510, 340, 50));
 
         jPanel17.setBackground(new java.awt.Color(51, 51, 51));
 
@@ -409,7 +411,7 @@ public class dashBoard extends javax.swing.JFrame {
                 .addGap(0, 9, Short.MAX_VALUE))
         );
 
-        jPanel3.add(jPanel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 490, 340, 50));
+        jPanel3.add(jPanel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 570, 340, 50));
 
         jPanel18.setBackground(new java.awt.Color(51, 51, 51));
 
@@ -442,7 +444,7 @@ public class dashBoard extends javax.swing.JFrame {
                 .addGap(0, 9, Short.MAX_VALUE))
         );
 
-        jPanel3.add(jPanel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 540, -1, -1));
+        jPanel3.add(jPanel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 620, -1, -1));
 
         jPanel12.setBackground(new java.awt.Color(51, 51, 51));
         jPanel12.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -486,7 +488,27 @@ public class dashBoard extends javax.swing.JFrame {
                 .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel3.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, -1, -1));
+        jPanel3.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, -1, -1));
+
+        dashboard_name.setBackground(new java.awt.Color(204, 204, 204));
+
+        name.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+
+        javax.swing.GroupLayout dashboard_nameLayout = new javax.swing.GroupLayout(dashboard_name);
+        dashboard_name.setLayout(dashboard_nameLayout);
+        dashboard_nameLayout.setHorizontalGroup(
+            dashboard_nameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dashboard_nameLayout.createSequentialGroup()
+                .addGap(95, 95, 95)
+                .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(130, Short.MAX_VALUE))
+        );
+        dashboard_nameLayout.setVerticalGroup(
+            dashboard_nameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(name, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+        );
+
+        jPanel3.add(dashboard_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 340, 90));
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 340, 760));
 
@@ -863,6 +885,7 @@ public class dashBoard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel dashboard_name;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel18;
@@ -904,6 +927,7 @@ public class dashBoard extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
+    public javax.swing.JLabel name;
     private javax.swing.JLabel students;
     private javax.swing.JLabel users;
     // End of variables declaration//GEN-END:variables
