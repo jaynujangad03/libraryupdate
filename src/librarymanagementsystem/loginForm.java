@@ -6,13 +6,19 @@
 package librarymanagementsystem;
 
 import admin.dashBoard;
-import admin.userPage;
+import config.Session;
 import config.dbConnector;
+import config.passwordHasher;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import static javafx.scene.input.KeyCode.I;
 import javax.swing.JOptionPane;
+import managestudent.managestudentF;
+import managestudent.managestudentTable;
 import register.registerForm;
+import user.userDashboard;
 
 /**
  *
@@ -29,27 +35,45 @@ public class loginForm extends javax.swing.JFrame {
    
     static String status;
     static String account;
-    static String name;
+    
     
     public static boolean loginAcc(String username, String password){
         dbConnector connector = new dbConnector();
         try{
-            String query = "SELECT * FROM tbl_user  WHERE u_username = '" +username+ "' AND u_password = '" +password+ "'";
+            String query = "SELECT * FROM tbl_user WHERE u_username = '" + username + "'";
             ResultSet resultSet = connector.getData(query);
             if(resultSet.next()){
-                name = resultSet.getString("u_fname");               
+                
+                String hashedPass = resultSet.getString("u_password");
+                String rehashedPass = passwordHasher.hashPassword(password);
+                   
+            
+                if(hashedPass.equals(rehashedPass)){
                 status = resultSet.getString("u_status");
                 account = resultSet.getString("u_account");
+                Session sess = Session.getInstance();
+                sess.setUid(resultSet.getInt("u_id"));
+                sess.setFname(resultSet.getString("u_fname"));
+                sess.setLname(resultSet.getString("u_lname"));
+                sess.setEmail(resultSet.getString("u_email"));
+                sess.setUsername(resultSet.getString("u_username"));
+                sess.setAccount(resultSet.getString("u_account"));
+                sess.setStatus(resultSet.getString("u_status"));               
                     return true;                    
             }else{
                 return false;
             }    
-        }catch (SQLException ex) {
-            System.out.println(""+ex);
+        }else{
+                return false;
+            }  
+            }catch (SQLException | NoSuchAlgorithmException ex) {
+            
             return false;
         }
 
     }
+    
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -76,7 +100,7 @@ public class loginForm extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
-        pass = new javax.swing.JPasswordField();
+        s_pass = new javax.swing.JPasswordField();
         jLabel13 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         show = new javax.swing.JCheckBox();
@@ -90,7 +114,7 @@ public class loginForm extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(102, 102, 225));
         jLabel1.setText("LIBRARY SYSTEM");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 200, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 51, 51));
@@ -105,11 +129,11 @@ public class loginForm extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 51, 51));
         jLabel6.setText("WELCOME TO");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, -1, -1));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICON/signup-library-icon.png"))); // NOI18N
         jLabel5.setText("jLabel5");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(-170, 280, 770, 550));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(-170, 200, 690, 460));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 520, 830));
 
@@ -120,25 +144,25 @@ public class loginForm extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 25)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Welcome, Login To Your Account");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, -1, -1));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, -1, -1));
 
         jLabel7.setBackground(new java.awt.Color(255, 255, 255));
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("PASSWORD");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 390, -1, 20));
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 320, -1, 20));
 
         jLabel8.setBackground(new java.awt.Color(255, 255, 255));
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 25)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("LOGIN PAGE");
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, -1, -1));
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, -1, -1));
 
         jLabel9.setBackground(new java.awt.Color(255, 255, 255));
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICON/icons8_Secure_50px.png"))); // NOI18N
-        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 390, -1, -1));
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 320, -1, -1));
 
         user.setBackground(new java.awt.Color(102, 102, 225));
         user.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -147,20 +171,20 @@ public class loginForm extends javax.swing.JFrame {
         user.setToolTipText("");
         user.setAutoscrolls(false);
         user.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
-        jPanel2.add(user, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 300, 270, -1));
+        jPanel2.add(user, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 230, 270, -1));
         user.getAccessibleContext().setAccessibleName("");
 
         jLabel10.setBackground(new java.awt.Color(255, 255, 255));
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("USERNAME");
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 270, -1, -1));
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 200, -1, -1));
 
         jLabel11.setBackground(new java.awt.Color(255, 255, 255));
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICON/icons8_Account_50px.png"))); // NOI18N
-        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 270, -1, -1));
+        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 200, -1, -1));
 
         jButton2.setBackground(new java.awt.Color(255, 255, 255));
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -170,7 +194,7 @@ public class loginForm extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 520, 100, 40));
+        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 450, 100, 40));
 
         jLabel12.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(0, 255, 0));
@@ -180,18 +204,18 @@ public class loginForm extends javax.swing.JFrame {
                 jLabel12MouseClicked(evt);
             }
         });
-        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 590, 460, 30));
+        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 510, 460, 30));
 
-        pass.setBackground(new java.awt.Color(102, 102, 225));
-        pass.setForeground(new java.awt.Color(255, 255, 255));
-        pass.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        pass.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
-        pass.addActionListener(new java.awt.event.ActionListener() {
+        s_pass.setBackground(new java.awt.Color(102, 102, 225));
+        s_pass.setForeground(new java.awt.Color(255, 255, 255));
+        s_pass.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        s_pass.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
+        s_pass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passActionPerformed(evt);
+                s_passActionPerformed(evt);
             }
         });
-        jPanel2.add(pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 420, 270, 20));
+        jPanel2.add(s_pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 350, 270, 20));
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
@@ -213,10 +237,10 @@ public class loginForm extends javax.swing.JFrame {
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1, Short.MAX_VALUE)
+            .addGap(0, 2, Short.MAX_VALUE)
         );
 
-        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 620, 470, 1));
+        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 540, 470, -1));
         jPanel5.getAccessibleContext().setAccessibleName("");
 
         show.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
@@ -226,34 +250,32 @@ public class loginForm extends javax.swing.JFrame {
                 showActionPerformed(evt);
             }
         });
-        jPanel2.add(show, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 460, 120, -1));
+        jPanel2.add(show, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 390, 120, -1));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 0, 530, 830));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 0, 530, 660));
 
-        setSize(new java.awt.Dimension(1065, 867));
+        setSize(new java.awt.Dimension(1065, 699));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        if(loginAcc(user.getText(), pass.getText())){
+        if(loginAcc(user.getText(), s_pass.getText())){
         if(!status.equals("Active")){
         JOptionPane.showMessageDialog(null, "In-Active Account, Contact the Admin!");
     }else{
         if(account.equals("Admin")){
         JOptionPane.showMessageDialog(null, "Login Successfully!");
         dashBoard dashBoard = new dashBoard();
-        dashBoard.name.setText(""+name);
         dashBoard.setVisible(true);
         this.dispose();
     }else if(account.equals("User")){
         JOptionPane.showMessageDialog(null, "Login Successfully!");
-        userPage userPage = new userPage();
-        userPage.name.setText(""+name);
-        userPage.setVisible(true);
+        userDashboard userDashboard = new userDashboard();      
+        userDashboard.setVisible(true);
         this.dispose();
     }else{
-        JOptionPane.showMessageDialog(null, "No accout type found, Contact the Admin!");
+        JOptionPane.showMessageDialog(null, "No account type found, Contact the Admin!");
     }
         }
     }else{
@@ -261,9 +283,9 @@ public class loginForm extends javax.swing.JFrame {
     }
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void passActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passActionPerformed
+    private void s_passActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_s_passActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_passActionPerformed
+    }//GEN-LAST:event_s_passActionPerformed
 
     private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
         // TODO add your handling code here:
@@ -281,9 +303,9 @@ public class loginForm extends javax.swing.JFrame {
     private void showActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showActionPerformed
         // TODO add your handling code here:
         if (show.isSelected()) {
-        pass.setEchoChar((char)0); 
+        s_pass.setEchoChar((char)0); 
     } else {
-        pass.setEchoChar('*'); 
+        s_pass.setEchoChar('*'); 
     }
 
     }//GEN-LAST:event_showActionPerformed
@@ -342,7 +364,7 @@ public class loginForm extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPasswordField pass;
+    private javax.swing.JPasswordField s_pass;
     private javax.swing.JCheckBox show;
     public javax.swing.JTextField user;
     // End of variables declaration//GEN-END:variables
